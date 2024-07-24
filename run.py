@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+from random import randint
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -24,24 +25,24 @@ GAME_TWO = fiveBYfive.get_all_values()
 
 def welcome_page():
 
-    print("Welcome! Please chose board size by entering:")
-    print("1: 4by4 grid")
-    print("2: 5by5 grid")
+    print("Welcome to the Battleships Game:")
+    print("1: 4x4 grid")
 
-    data_int = input("Chose between 1 or 2: ")
-    if data_int == "1":
+    data_int = input("Please select 1 to start game: ")
+    while data_int != "1":
+        data_int = input("Please enter 1: ")
+    else:
         print(frBYfr.row_values(1))
         print(frBYfr.row_values(2))
         print(frBYfr.row_values(3))
-        print(frBYfr.row_values(4))                        
-    else:
-        print(fiveBYfive.row_values(1))
-        print(fiveBYfive.row_values(2))
-        print(fiveBYfive.row_values(3))
-        print(fiveBYfive.row_values(4))
-        print(fiveBYfive.row_values(5))
+        print(frBYfr.row_values(4))
+
 
 welcome_page()
 
 def comp_board_picks():
-    print("")
+    return 0
+    
+def random_ship():
+    return randint(0, 5)
+    
