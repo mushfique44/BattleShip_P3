@@ -33,16 +33,19 @@ def welcome_page():
         data_int = input("Please enter 1: ")
     else:
         print("Player 1 Board:")
-        for x in range(4):
+        for x in range(5):
             print(frBYfr.row_values(x+1))
         print("Computers Board:")
-        for x in range(4):
+        for x in range(5):
             print(comp_frBYfr.row_values(x+1))
-        
-        
+        print("")
+
+
+
     
 
 welcome_page()
+
 
 def comp_board_picks():
     return 0
@@ -50,4 +53,27 @@ def comp_board_picks():
 def random_ship():
     return randint(0, 5)
 
-    
+def pick_ship_location():
+    while True:
+        pick_colm = input("Pick a colomn between A-D: ")
+        if pick_colm == "a":
+            pick_colm = 1
+            break
+        elif pick_colm == "b":
+            pick_colm = 2
+            break
+        elif pick_colm == "c":
+            pick_colm = 3
+            break
+        elif pick_colm == "d":
+            pick_colm = 4
+            break
+        else:
+            return False
+
+    pick_row = input("Pick a row between 1-4: ")
+    upt_cell = frBYfr.update_cell(pick_colm + 1, int(pick_row) + 1, "X")
+    # pick = (pick_colm, int(pick_row))
+    # print(pick)
+
+pick_ship_location()
