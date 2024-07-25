@@ -32,11 +32,15 @@ def welcome_page():
     while data_int != "1":
         data_int = input("Please enter 1: ")
     else:
-        print(frBYfr.row_values(1))
-        print(frBYfr.row_values(2))
-        print(frBYfr.row_values(3))
-        print(frBYfr.row_values(4))
-
+        print("Player 1 Board:")
+        for x in range(4):
+            print(frBYfr.row_values(x+1))
+        print("Computers Board:")
+        for x in range(4):
+            print(comp_frBYfr.row_values(x+1))
+        
+        
+    
 
 welcome_page()
 
@@ -45,4 +49,5 @@ def comp_board_picks():
     
 def random_ship():
     return randint(0, 5)
+
     
