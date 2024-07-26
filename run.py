@@ -20,38 +20,12 @@ comp_fiveBYfive = SHEET.worksheet('comp5BY5')
 
 GAME_ONE = frBYfr.get_all_values()
 GAME_TWO = fiveBYfive.get_all_values()
-
-
-
-def welcome_page():
-
-    print("Welcome to the Battleships Game:")
-    print("1: 4x4 grid")
-
-    data_int = input("Please select 1 to start game: ")
-    while data_int != "1":
-        data_int = input("Please enter 1: ")
-    else:
-        print("Player 1 Board:")
-        for x in range(5):
-            print(frBYfr.row_values(x+1))
-        print("Computers Board:")
-        for x in range(5):
-            print(comp_frBYfr.row_values(x+1))
-        print("")
-
-
-
-    
-
-welcome_page()
-
-
-def comp_board_picks():
-    return 0
-    
 def random_ship():
-    return randint(0, 5)
+    x = randint(1, 4)
+    y = randint(1, 4)
+
+    rand_cell = comp_frBYfr.update_cell(y +1, x + 1, "X")
+    print(x, y)
 
 def pick_ship_location():
     while True:
@@ -76,4 +50,47 @@ def pick_ship_location():
     # pick = (pick_colm, int(pick_row))
     # print(pick)
 
-pick_ship_location()
+
+
+def welcome_page():
+
+    print("Welcome to the Battleships Game:")
+    print("1: 4x4 grid")
+
+    data_int = input("Please select 1 to start game: ")
+    while data_int != "1":
+        data_int = input("Please enter 1: ")
+    else:
+        print("Player 1 Board:")
+        for x in range(5):
+            print(frBYfr.row_values(x+1))
+        print("Computers Board:")
+        for x in range(5):
+            print(comp_frBYfr.row_values(x+1))
+        print("")
+
+    pick_ship_location()
+    random_ship()
+
+
+    
+
+welcome_page()
+
+
+def comp_board_picks():
+    return 0
+    
+def restart_game():
+    restart_r = input("Type 'r' to Restart game: ")
+    if restart_r == "r":
+        for x in range(4):
+            for i in range(4):
+                restart_player = frBYfr.update_cell(x+2, i+2, "0")
+        
+    else:
+        False
+
+
+restart_game()
+
