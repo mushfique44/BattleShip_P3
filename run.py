@@ -17,6 +17,7 @@ frBYfr = SHEET.worksheet('4BY4')
 comp_frBYfr = SHEET.worksheet('comp4BY4')
 fiveBYfive = SHEET.worksheet('5BY5')
 comp_fiveBYfive = SHEET.worksheet('comp5BY5')
+blank_frBYfr = SHEET.worksheet('blank4BY4')
 
 GAME_ONE = frBYfr.get_all_values()
 GAME_TWO = fiveBYfive.get_all_values()
@@ -28,7 +29,7 @@ def random_ship():
     print(x, y)
 
 def pick_ship_location():
-    while True:
+    while True: 
         pick_colm = input("Pick a colomn between A-D: ")
         if pick_colm == "a":
             pick_colm = 1
@@ -66,7 +67,7 @@ def welcome_page():
             print(frBYfr.row_values(x+1))
         print("Computers Board:")
         for x in range(5):
-            print(comp_frBYfr.row_values(x+1))
+            print(blank_frBYfr.row_values(x+1))
         print("")
 
     pick_ship_location()
@@ -87,9 +88,9 @@ def restart_game():
         for x in range(4):
             for i in range(4):
                 restart_player = frBYfr.update_cell(x+2, i+2, "0")
-        
+                restart_comp = comp_frBYfr.update_cell(x+2, i+2, "0")
     else:
-        False
+        
 
 
 restart_game()
