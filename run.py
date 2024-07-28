@@ -64,8 +64,10 @@ def pick_ship_location():
         else:
             pick_row = input("Please pick a number between 1-4: ")
 
-
+    
     upt_cell = frBYfr.update_cell(int(pick_row) + 1, pick_colm + 1, "X")
+    # pick_check = frBYfr.acell(3, 1).value
+    # print(pick_check)
     # pick = (pick_colm, int(pick_row))
     # print(pick)
 
