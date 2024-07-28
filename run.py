@@ -29,8 +29,9 @@ def random_ship():
     print(x, y)
 
 def pick_ship_location():
+    
+    pick_colm = input("Pick a colomn between a-d (needs to be lowercase): ")
     while True: 
-        pick_colm = input("Pick a colomn between A-D: ")
         if pick_colm == "a":
             pick_colm = 1
             break
@@ -44,16 +45,43 @@ def pick_ship_location():
             pick_colm = 4
             break
         else:
-            return False
+            pick_colm = input("Please pick between a-d (needs to be lowercase): ")
 
     pick_row = input("Pick a row between 1-4: ")
-    upt_cell = frBYfr.update_cell(pick_colm + 1, int(pick_row) + 1, "X")
+    while True:
+        if pick_row == "1":
+            pick_row = 1
+            break
+        elif pick_row == "2":
+            pick_row = 2
+            break
+        elif pick_row == "3":
+            pick_row = 3
+            break
+        elif pick_row == "4":
+            pick_row = 4
+            break
+        else:
+            pick_row = input("Please pick a number between 1-4: ")
+
+
+    upt_cell = frBYfr.update_cell(int(pick_row) + 1, pick_colm + 1, "X")
     # pick = (pick_colm, int(pick_row))
     # print(pick)
 
+def restart_game():
+    restart_r = input("Type 'r' to Restart game: ")
+    print("restarting...")
+    if restart_r == "r":
+        for x in range(4):
+            for i in range(4):
+                restart_player = frBYfr.update_cell(x+2, i+2, "0")
+                restart_comp = comp_frBYfr.update_cell(x+2, i+2, "0")
+    else:
+        print("enter r to Restart: ")
 
 
-def welcome_page():
+def start_game():
 
     print("Welcome to the Battleships Game:")
     print("1: 4x4 grid")
@@ -76,22 +104,6 @@ def welcome_page():
 
     
 
-welcome_page()
+start_game()
 
-
-def comp_board_picks():
-    return 0
-    
-def restart_game():
-    restart_r = input("Type 'r' to Restart game: ")
-    if restart_r == "r":
-        for x in range(4):
-            for i in range(4):
-                restart_player = frBYfr.update_cell(x+2, i+2, "0")
-                restart_comp = comp_frBYfr.update_cell(x+2, i+2, "0")
-    else:
-        
-
-
-restart_game()
 
