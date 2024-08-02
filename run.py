@@ -25,7 +25,12 @@ def random_ship():
     x = randint(1, 4)
     y = randint(1, 4)
 
-    rand_cell = comp_frBYfr.update_cell(y +1, x + 1, "X")
+    rand_val = comp_frBYfr.cell(x, y).value
+    if rand_val != "X":
+        rand_cell = comp_frBYfr.update_cell(y +1, x + 1, "X")
+    else:
+        random_ship()
+
     print(x, y)
 
 def pick_ship_location():
@@ -64,12 +69,15 @@ def pick_ship_location():
         else:
             pick_row = input("Please pick a number between 1-4: ")
 
-    
-    upt_cell = frBYfr.update_cell(int(pick_row) + 1, pick_colm + 1, "X")
-    # pick_check = frBYfr.acell(3, 1).value
-    # print(pick_check)
-    # pick = (pick_colm, int(pick_row))
-    # print(pick)
+    val = frBYfr.cell(pick_row + 1, pick_colm + 1).value
+
+    if val != "X":
+        upt_cell = frBYfr.update_cell(int(pick_row) + 1, pick_colm + 1, "X")
+    else:
+        print("--Location already picked. Please pick again--")
+        pick_ship_location()
+    #print(val)
+
 
 def restart_game():
     restart_r = input("Type 'r' to Restart game: ")
@@ -92,16 +100,28 @@ def start_game():
     while data_int != "1":
         data_int = input("Please enter 1: ")
     else:
-        print("Player 1 Board:")
+        print("--Player 1 Board: --")
         for x in range(5):
             print(frBYfr.row_values(x+1))
-        print("Computers Board:")
+        print("--Computers Board: --")
         for x in range(5):
             print(blank_frBYfr.row_values(x+1))
         print("")
 
     pick_ship_location()
     random_ship()
+
+    print("--Please pick loacation of SECOND ship--")
+    pick_ship_location()
+    random_ship()
+
+    print("--Please pick loacation of THIRD ship--")
+    pick_ship_location()
+    random_ship()
+
+    print("")
+    
+
 
 
     
