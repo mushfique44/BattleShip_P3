@@ -88,22 +88,22 @@ def restart_game():
                 restart_player = frBYfr.update_cell(x+2, i+2, "0")
                 restart_comp = comp_frBYfr.update_cell(x+2, i+2, "0")
     else:
-        print("enter r to Restart: ")
+        print("enter 'r' to Restart: ")
 
 
 def start_game():
 
-    print("Welcome to the Battleships Game:")
+    print("~~ Welcome to the Battleships Game: ~~")
     print("1: 4x4 grid")
 
     data_int = input("Please select 1 to start game: ")
     while data_int != "1":
         data_int = input("Please enter 1: ")
     else:
-        print("--Player 1 Board: --")
+        print("-- Player 1 Board: --")
         for x in range(5):
             print(frBYfr.row_values(x+1))
-        print("--Computers Board: --")
+        print("-- Computers Board: --")
         for x in range(5):
             print(blank_frBYfr.row_values(x+1))
         print("")
@@ -111,15 +111,24 @@ def start_game():
     pick_ship_location()
     random_ship()
 
-    print("--Please pick loacation of SECOND ship--")
+    print("-- Please pick loacation of SECOND ship --\n")
     pick_ship_location()
     random_ship()
 
-    print("--Please pick loacation of THIRD ship--")
+    print("-- Please pick loacation of THIRD ship --\n")
     pick_ship_location()
     random_ship()
 
-    print("")
+    print("-- Ships are all ready! Time to take out the computers ships!! --\n")
+    print("Are ready to continue? ")
+    yes_no = input("enter 'Y' for yes OR 'N' for no: ")
+    while True:
+        if yes_no == "y" or "Y":
+            print("continuing...")
+        elif yes_no == "n" or "N":
+            restart_game()
+
+
     
 
 
