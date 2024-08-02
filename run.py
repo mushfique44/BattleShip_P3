@@ -108,12 +108,11 @@ def start_game():
             print(blank_frBYfr.row_values(x+1))
         print("")
 
+    print("-- Please pick loacation of First ship --\n")
     pick_ship_location()
-    random_ship()
 
     print("-- Please pick loacation of SECOND ship --\n")
     pick_ship_location()
-    random_ship()
 
     print("-- Please pick loacation of THIRD ship --\n")
     pick_ship_location()
