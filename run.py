@@ -116,16 +116,18 @@ def start_game():
 
     print("-- Please pick loacation of THIRD ship --\n")
     pick_ship_location()
+
+    random_ship()
+    random_ship()
     random_ship()
 
     print("-- Ships are all ready! Time to take out the computers ships!! --\n")
     print("Are ready to continue? ")
     yes_no = input("enter 'Y' for yes OR 'N' for no: ")
-    while True:
-        if yes_no == "y" or "Y":
-            print("continuing...")
-        elif yes_no == "n" or "N":
-            restart_game()
+    if yes_no == "y":
+        print("continuing...")
+    elif yes_no == "n":
+        restart_game()
 
 
     
