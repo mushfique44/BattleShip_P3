@@ -82,6 +82,7 @@ def pick_ship_location():
 def restart_game():
     restart_r = input("Type 'r' to Restart game: ")
     print("restarting...")
+    print("please wait a minute to restart...")
     if restart_r == "r":
         for x in range(4):
             for i in range(4):
@@ -89,6 +90,50 @@ def restart_game():
                 restart_comp = comp_frBYfr.update_cell(x+2, i+2, "0")
     else:
         print("enter 'r' to Restart: ")
+
+def play_game():
+
+    print("-- Guess the locations of the computers ships --\n")
+
+    hit_colm = input("Pick a colomn between a-d (needs to be lowercase): ")
+    while True: 
+        if hit_colm == "a":
+            hit_colm = 1
+            break
+        elif hit_colm == "b":
+            hit_colm = 2
+            break
+        elif hit_colm == "c":
+            hit_colm = 3
+            break
+        elif hit_colm == "d":
+            hit_colm = 4
+            break
+        else:
+            hit_colm = input("Please pick between a-d (needs to be lowercase): ")
+
+    hit_row = input("Pick a row between 1-4: ")
+    while True:
+        if hit_row == "1":
+            hit_row = 1
+            break
+        elif hit_row == "2":
+            hit_row = 2
+            break
+        elif hit_row == "3":
+            hit_row = 3
+            break
+        elif hit_row == "4":
+            hit_row = 4
+            break
+        else:
+            hit_row = input("Please pick a number between 1-4: ")
+
+    hit_val = frBYfr.cell(hit_row + 1, hit_colm + 1).value
+
+    if hit_val == "X":
+        print("Congrats that was a hit")
+
 
 
 def start_game():
@@ -108,13 +153,13 @@ def start_game():
             print(blank_frBYfr.row_values(x+1))
         print("")
 
-    print("-- Please pick loacation of First ship --\n")
+    print("-- Please pick location of First ship --\n")
     pick_ship_location()
 
-    print("-- Please pick loacation of SECOND ship --\n")
+    print("-- Please pick location of SECOND ship --\n")
     pick_ship_location()
 
-    print("-- Please pick loacation of THIRD ship --\n")
+    print("-- Please pick location of THIRD ship --\n")
     pick_ship_location()
 
     random_ship()
@@ -123,11 +168,13 @@ def start_game():
 
     print("-- Ships are all ready! Time to take out the computers ships!! --\n")
     print("Are ready to continue? ")
-    yes_no = input("enter 'Y' for yes OR 'N' for no: ")
+    yes_no = input("enter 'y' for yes OR 'n' for no: ")
     if yes_no == "y":
-        print("continuing...")
+        play_game()
     elif yes_no == "n":
         restart_game()
+    else:
+        yes_no = input("Please enter 'y' or 'n': ")
 
 
     
