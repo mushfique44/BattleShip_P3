@@ -94,6 +94,14 @@ def restart_game():
 def play_game():
 
     print("-- Guess the locations of the computers ships --\n")
+    print("-- Player 1 Board: --")
+    for x in range(5):
+        print(frBYfr.row_values(x+1))
+    print("-- Computers Board: --")
+    for x in range(5):
+        print(blank_frBYfr.row_values(x+1))
+    print("")
+    print("('0' is empty / 'X' is Ship / '@' is hit Ship / '#' missed guess)\n")
 
     hit_colm = input("Pick a colomn between a-d (needs to be lowercase): ")
     while True: 
@@ -133,18 +141,26 @@ def play_game():
 
     if hit_val == "X":
         print("Congrats that was a hit")
+        upt_hit_cell = frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "@")
+    elif hit_val == "#":
+        print("You have already guesses this location. Please guess again.\n")
+        play_game()
+    else:
+        print("That was a miss. Try again next turn!")
+        upt_miss_cell = frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "#")
 
 
 
 def start_game():
 
-    print("~~ Welcome to the Battleships Game: ~~")
-    print("1: 4x4 grid")
+    print("~~ Welcome to the Battleships Game: ~~\n")
+    print("1: 4x4 grid\n")
 
     data_int = input("Please select 1 to start game: ")
     while data_int != "1":
         data_int = input("Please enter 1: ")
     else:
+        print("")
         print("-- Player 1 Board: --")
         for x in range(5):
             print(frBYfr.row_values(x+1))
@@ -152,6 +168,7 @@ def start_game():
         for x in range(5):
             print(blank_frBYfr.row_values(x+1))
         print("")
+        print("('0' is empty / 'X' is Ship / '@' is hit Ship / '#' missed guess)\n")
 
     print("-- Please pick location of First ship --\n")
     pick_ship_location()
@@ -169,6 +186,7 @@ def start_game():
     print("-- Ships are all ready! Time to take out the computers ships!! --\n")
     print("Are ready to continue? ")
     yes_no = input("enter 'y' for yes OR 'n' for no: ")
+    print("")
     if yes_no == "y":
         play_game()
     elif yes_no == "n":
