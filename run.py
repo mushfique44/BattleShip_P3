@@ -74,7 +74,7 @@ def pick_ship_location():
     if val != "X":
         upt_cell = frBYfr.update_cell(int(pick_row) + 1, pick_colm + 1, "X")
     else:
-        print("--Location already picked. Please pick again--")
+        print("-- Location already picked. Please pick again --")
         pick_ship_location()
     #print(val)
 
@@ -137,17 +137,22 @@ def play_game():
         else:
             hit_row = input("Please pick a number between 1-4: ")
 
-    hit_val = frBYfr.cell(hit_row + 1, hit_colm + 1).value
+    hit_val = comp_frBYfr.cell(hit_row + 1, hit_colm + 1).value
 
     if hit_val == "X":
         print("Congrats that was a hit")
-        upt_hit_cell = frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "@")
+        upt_hit_cell = comp_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "@")
+        upt_hit__blank_cell = blank_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "@")
     elif hit_val == "#":
         print("You have already guesses this location. Please guess again.\n")
         play_game()
+    elif hit_val == "@":
+        print("You have hit a ship in this location already. Please guess again.\n")
+        play_game()
     else:
         print("That was a miss. Try again next turn!")
-        upt_miss_cell = frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "#")
+        upt_miss_cell = comp_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "#")
+
 
 
 
@@ -193,10 +198,6 @@ def start_game():
         restart_game()
     else:
         yes_no = input("Please enter 'y' or 'n': ")
-
-
-    
-
 
 
     
