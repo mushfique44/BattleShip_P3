@@ -143,6 +143,8 @@ def play_game():
         print("Congrats that was a hit")
         upt_hit_cell = comp_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "@")
         upt_hit__blank_cell = blank_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "@")
+        print("You can guess again.\n")
+        play_game()
     elif hit_val == "#":
         print("You have already guesses this location. Please guess again.\n")
         play_game()
@@ -152,6 +154,12 @@ def play_game():
     else:
         print("That was a miss. Try again next turn!")
         upt_miss_cell = comp_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "#")
+        upt_hit__blank_cell = blank_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "#")
+
+
+def comp_guess():
+    x1 = randint(1, 4)
+    y1 = randint(1, 4)
 
 
 
