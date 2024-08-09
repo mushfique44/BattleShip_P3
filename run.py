@@ -105,14 +105,7 @@ def restart_game():
 def play_game():
 
     print("-- Guess the locations of the computers ships --\n")
-    print("-- Player 1 Board: --")
-    for x in range(5):
-        print(frBYfr.row_values(x+1))
-    print("-- Computers Board: --")
-    for x in range(5):
-        print(blank_frBYfr.row_values(x+1))
-    print("")
-    print("('0' is empty / 'X' is Ship / '@' is hit Ship / '#' missed guess)\n")
+    play_board()
 
     hit_colm = input("Pick a colomn between a-d (needs to be lowercase): ")
     while True: 
@@ -172,7 +165,11 @@ def comp_guess():
     x1 = randint(1, 4)
     y1 = randint(1, 4)
 
+    rand_guess = frBYfr.cell(x1 + 1, y1 + 1).value
 
+    if rand_guess == "0":
+        print("Computer missed")
+        upt_comp_miss = frBYfr.update_cell(x1 + 1, y1 + 1,'#')
 
 
 def start_game():
