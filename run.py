@@ -21,6 +21,17 @@ blank_frBYfr = SHEET.worksheet('blank4BY4')
 
 GAME_ONE = frBYfr.get_all_values()
 GAME_TWO = fiveBYfive.get_all_values()
+def play_board():
+    print("")
+    print("-- Player 1 Board: --")
+    for x in range(5):
+        print(frBYfr.row_values(x+1))
+    print("-- Computers Board: --")
+    for x in range(5):
+        print(blank_frBYfr.row_values(x+1))
+    print("")
+    print("('0' is empty / 'X' is Ship / '@' is hit Ship / '#' missed guess)\n")
+
 def random_ship():
     x = randint(1, 4)
     y = randint(1, 4)
@@ -173,15 +184,7 @@ def start_game():
     while data_int != "1":
         data_int = input("Please enter 1: ")
     else:
-        print("")
-        print("-- Player 1 Board: --")
-        for x in range(5):
-            print(frBYfr.row_values(x+1))
-        print("-- Computers Board: --")
-        for x in range(5):
-            print(blank_frBYfr.row_values(x+1))
-        print("")
-        print("('0' is empty / 'X' is Ship / '@' is hit Ship / '#' missed guess)\n")
+        play_board()
 
     print("-- Please pick location of First ship --\n")
     pick_ship_location()
