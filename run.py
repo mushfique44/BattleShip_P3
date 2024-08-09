@@ -37,10 +37,10 @@ def random_ship():
     y = randint(1, 4)
 
     rand_val = comp_frBYfr.cell(x, y).value
-    if rand_val != "X":
+    if rand_val == "0":
         rand_cell = comp_frBYfr.update_cell(y +1, x + 1, "X")
-    else:
-        random_ship()
+    elif rand_val == "X":
+        random_ship()   
 
     print(x, y)
 
@@ -99,6 +99,8 @@ def restart_game():
             for i in range(4):
                 restart_player = frBYfr.update_cell(x+2, i+2, "0")
                 restart_comp = comp_frBYfr.update_cell(x+2, i+2, "0")
+                restart_comp = blank_frBYfr.update_cell(x+2, i+2, "0")
+                
     else:
         print("enter 'r' to Restart: ")
 
@@ -170,6 +172,11 @@ def comp_guess():
     if rand_guess == "0":
         print("Computer missed")
         upt_comp_miss = frBYfr.update_cell(x1 + 1, y1 + 1,'#')
+    elif rand_guess == "#":
+        comp_guess()
+    elif rand_guess == "X":
+        print("Computer has hit your ship")
+        upt_comp_hit = frBYfr.update_cell(x1+1, y1+1, "@")
 
 
 def start_game():
@@ -202,6 +209,7 @@ def start_game():
     print("")
     if yes_no == "y":
         play_game()
+        comp_guess()
     elif yes_no == "n":
         restart_game()
     else:
