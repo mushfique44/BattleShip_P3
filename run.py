@@ -37,11 +37,14 @@ def random_ship():
     y = randint(1, 4)
 
     rand_val = comp_frBYfr.cell(x, y).value
-    if rand_val == "0":
-        rand_cell = comp_frBYfr.update_cell(y +1, x + 1, "X")
-    elif rand_val == "X":
-        random_ship()   
+    if rand_val == "X":
+        x = randint(1, 4)
+        y = randint(1, 4)
 
+        rand_val = comp_frBYfr.cell(x, y).value
+    else:
+        rand_cell = comp_frBYfr.update_cell(y +1, x + 1, "X")
+    
     print(x, y)
 
 def pick_ship_location():
@@ -104,6 +107,22 @@ def restart_game():
     else:
         print("enter 'r' to Restart: ")
 
+def comp_guess():
+    x1 = randint(1, 4)
+    y1 = randint(1, 4)
+
+    rand_guess = frBYfr.cell(x1 + 1, y1 + 1).value
+
+    if rand_guess == "0":
+        print("Computer missed")
+        upt_comp_miss = frBYfr.update_cell(x1 + 1, y1 + 1,'#')
+    elif rand_guess == "#":
+        comp_guess()
+    elif rand_guess == "X":
+        print("Computer has hit your ship")
+        upt_comp_hit = frBYfr.update_cell(x1+1, y1+1, "@")
+
+
 def play_game():
 
     print("-- Guess the locations of the computers ships --\n")
@@ -161,22 +180,11 @@ def play_game():
         print("That was a miss. Try again next turn!")
         upt_miss_cell = comp_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "#")
         upt_hit__blank_cell = blank_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "#")
-
-
-def comp_guess():
-    x1 = randint(1, 4)
-    y1 = randint(1, 4)
-
-    rand_guess = frBYfr.cell(x1 + 1, y1 + 1).value
-
-    if rand_guess == "0":
-        print("Computer missed")
-        upt_comp_miss = frBYfr.update_cell(x1 + 1, y1 + 1,'#')
-    elif rand_guess == "#":
         comp_guess()
-    elif rand_guess == "X":
-        print("Computer has hit your ship")
-        upt_comp_hit = frBYfr.update_cell(x1+1, y1+1, "@")
+        play_game()
+
+
+
 
 
 def start_game():
