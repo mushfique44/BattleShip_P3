@@ -127,7 +127,7 @@ def play_game():
 
     print("-- Guess the locations of the computers ships --\n")
     play_board()
-
+    game_winner()
     hit_colm = input("Pick a colomn between a-d (needs to be lowercase): ")
     while True: 
         if hit_colm == "a":
@@ -185,12 +185,21 @@ def play_game():
 
 def game_winner():
     
-    print("You have WON!")
     
+    win_count = comp_frBYfr.findall("@")
+    win_comp_count = frBYfr.findall("@")
 
+    if len(win_count) == 2:
+        print("You have WON!")
+        exit()
+
+    if len(win_comp_count) == 2:
+        print("You lose!")
+        exit()
 
 def start_game():
 
+    #game_winner()
     print("~~ Welcome to the Battleships Game: ~~\n")
     print("1: 4x4 grid\n")
 
@@ -225,7 +234,7 @@ def start_game():
     else:
         yes_no = input("Please enter 'y' or 'n': ")
 
-
+    
     
 
 start_game()
