@@ -36,17 +36,17 @@ def random_ship():
     x = randint(1, 4)
     y = randint(1, 4)
 
-    rand_val = comp_frBYfr.cell(x, y).value
+    rand_val = comp_frBYfr.cell(y+1, x+1).value
     if rand_val == "X":
-        x = randint(1, 4)
-        y = randint(1, 4)
-
-        rand_val = comp_frBYfr.cell(x, y).value
+        random_ship()
     else:
-        rand_cell = comp_frBYfr.update_cell(y +1, x + 1, "X")
+      rand_cell = comp_frBYfr.update_cell(y +1, x + 1, "X")
+      
     
     print(x, y)
-
+    print(rand_val)
+    #rand_cell = comp_frBYfr.update_cell(y +1, x + 1, "X")
+    
 def pick_ship_location():
     
     pick_colm = input("Pick a colomn between a-d (needs to be lowercase): ")
@@ -191,11 +191,11 @@ def game_winner():
 
     if len(win_count) == 2:
         print("You have WON!")
-        exit()
+        restart_game()
 
     if len(win_comp_count) == 2:
         print("You lose!")
-        exit()
+        restart_game()
 
 def start_game():
 
@@ -224,15 +224,13 @@ def start_game():
 
     print("-- Ships are all ready! Time to take out the computers ships!! --\n")
     print("Are ready to continue? ")
-    yes_no = input("enter 'y' for yes OR 'n' for no: ")
+    yes_no = input("enter 'y' to continue or anything else to restart: ")
     print("")
-    if yes_no == "y":
-        play_game()
-        comp_guess()
-    elif yes_no == "n":
+    if yes_no != "y":
         restart_game()
     else:
-        yes_no = input("Please enter 'y' or 'n': ")
+        play_game()
+        comp_guess()
 
     
     
