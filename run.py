@@ -94,9 +94,7 @@ def pick_ship_location():
 
 
 def restart_game():
-    restart_r = input("Type 'r' to Restart game: ")
     
-    if restart_r == "r":
         print("restarting...")
         print("please wait a minute to restart...")
         for x in range(4):
@@ -104,9 +102,7 @@ def restart_game():
                 restart_player = frBYfr.update_cell(x+2, i+2, "0")
                 restart_comp = comp_frBYfr.update_cell(x+2, i+2, "0")
                 restart_comp = blank_frBYfr.update_cell(x+2, i+2, "0")
-    else:
-        restart_game()
-    
+        exit()
     
 
 def comp_guess():
@@ -147,7 +143,7 @@ def play_game():
         else:
             hit_colm = input("Please pick between a-d (needs to be lowercase): ")
 
-    hit_row = input("Pick a row between 1-4: \n")
+    hit_row = input("Pick a row between 1-4: ")
     while True:
         if hit_row == "1":
             hit_row = 1
@@ -162,7 +158,7 @@ def play_game():
             hit_row = 4
             break
         else:
-            hit_row = input("Please pick a number between 1-4: \n")
+            hit_row = input("Please pick a number between 1-4: ")
 
     hit_val = comp_frBYfr.cell(hit_row + 1, hit_colm + 1).value
 
@@ -170,8 +166,7 @@ def play_game():
         print("Congrats that was a hit")
         upt_hit_cell = comp_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "@")
         upt_hit__blank_cell = blank_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "@")
-        print("You can guess again.\n")
-        play_game()
+        comp_guess()
     elif hit_val == "#":
         print("You have already guesses this location. Please guess again.\n")
         play_game()
@@ -179,7 +174,7 @@ def play_game():
         print("You have hit a ship in this location already. Please guess again.\n")
         play_game()
     else:
-        print("That was a miss. Try again next turn!")
+        print("That was a miss. Try again next turn!\n")
         upt_miss_cell = comp_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "#")
         upt_hit__blank_cell = blank_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "#")
         comp_guess()
@@ -191,11 +186,11 @@ def game_winner():
     win_count = comp_frBYfr.findall("@")
     win_comp_count = frBYfr.findall("@")
 
-    if len(win_count) == 2:
+    if len(win_count) == 3:
         print("You have WON!")
         restart_game()
 
-    if len(win_comp_count) == 2:
+    if len(win_comp_count) == 3:
         print("You lose!")
         restart_game()
 
