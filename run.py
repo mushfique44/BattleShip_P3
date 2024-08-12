@@ -95,17 +95,19 @@ def pick_ship_location():
 
 def restart_game():
     restart_r = input("Type 'r' to Restart game: ")
-    print("restarting...")
-    print("please wait a minute to restart...")
+    
     if restart_r == "r":
+        print("restarting...")
+        print("please wait a minute to restart...")
         for x in range(4):
             for i in range(4):
                 restart_player = frBYfr.update_cell(x+2, i+2, "0")
                 restart_comp = comp_frBYfr.update_cell(x+2, i+2, "0")
                 restart_comp = blank_frBYfr.update_cell(x+2, i+2, "0")
-                
     else:
-        print("enter 'r' to Restart: ")
+        restart_game()
+    
+    
 
 def comp_guess():
     x1 = randint(1, 4)
@@ -145,7 +147,7 @@ def play_game():
         else:
             hit_colm = input("Please pick between a-d (needs to be lowercase): ")
 
-    hit_row = input("Pick a row between 1-4: ")
+    hit_row = input("Pick a row between 1-4: \n")
     while True:
         if hit_row == "1":
             hit_row = 1
@@ -160,7 +162,7 @@ def play_game():
             hit_row = 4
             break
         else:
-            hit_row = input("Please pick a number between 1-4: ")
+            hit_row = input("Please pick a number between 1-4: \n")
 
     hit_val = comp_frBYfr.cell(hit_row + 1, hit_colm + 1).value
 
@@ -205,7 +207,7 @@ def start_game():
 
     data_int = input("Please select 1 to start game: ")
     while data_int != "1":
-        data_int = input("Please enter 1: ")
+        data_int = input("Please enter 1: \n")
     else:
         play_board()
 
