@@ -112,20 +112,58 @@ def comp_guess():
     rand_guess = frBYfr.cell(x1 + 1, y1 + 1).value
 
     if rand_guess == "0":
-        print("Computer missed")
+        print("Computer missed\n")
         upt_comp_miss = frBYfr.update_cell(x1 + 1, y1 + 1,'#')
     elif rand_guess == "#":
         comp_guess()
     elif rand_guess == "X":
-        print("Computer has hit your ship")
+        print("Computer has hit your ship\n")
         upt_comp_hit = frBYfr.update_cell(x1+1, y1+1, "@")
 
+#def player_guess(hit_val):
+
+    # hit_colm = input("Pick a colomn between a-d (needs to be lowercase): ")
+    # while True: 
+    #     if hit_colm == "a":
+    #         hit_colm = 1
+    #         break
+    #     elif hit_colm == "b":
+    #         hit_colm = 2
+    #         break
+    #     elif hit_colm == "c":
+    #         hit_colm = 3
+    #         break
+    #     elif hit_colm == "d":
+    #         hit_colm = 4
+    #         break
+    #     else:
+    #         hit_colm = input("Please pick between a-d (needs to be lowercase): ")
+
+    # hit_row = input("Pick a row between 1-4: ")
+    # while True:
+    #     if hit_row == "1":
+    #         hit_row = 1
+    #         break
+    #     elif hit_row == "2":
+    #         hit_row = 2
+    #         break
+    #     elif hit_row == "3":
+    #         hit_row = 3
+    #         break
+    #     elif hit_row == "4":
+    #         hit_row = 4
+    #         break
+    #     else:
+    #         hit_row = input("Please pick a number between 1-4: ")
+
+    # hit_val = comp_frBYfr.cell(hit_row + 1, hit_colm + 1).value
 
 def play_game():
 
     print("-- Guess the locations of the computers ships --\n")
     play_board()
     game_winner()
+    
     hit_colm = input("Pick a colomn between a-d (needs to be lowercase): ")
     while True: 
         if hit_colm == "a":
@@ -162,6 +200,7 @@ def play_game():
 
     hit_val = comp_frBYfr.cell(hit_row + 1, hit_colm + 1).value
 
+    
     if hit_val == "X":
         print("Congrats that was a hit")
         upt_hit_cell = comp_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "@")
@@ -180,6 +219,8 @@ def play_game():
         comp_guess()
         play_game()
 
+    #comp_guess()
+
 def game_winner():
     
     
@@ -197,6 +238,7 @@ def game_winner():
 def start_game():
 
     #game_winner()
+    print(game_winner())
     print("~~ Welcome to the Battleships Game: ~~\n")
     print("1: 4x4 grid\n")
 
@@ -226,11 +268,13 @@ def start_game():
     if yes_no != "y":
         restart_game()
     else:
-        play_game()
-        comp_guess()
-
+        while game_winner() == None:
+            play_game()
+            comp_guess()
+        else:
+            game_winner()
     
-    
+   
 
 start_game()
 
