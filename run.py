@@ -183,6 +183,7 @@ def play_game():
             hit_colm = input("Please pick between a-d (needs to be lowercase): ")
 
     hit_row = input("Pick a row between 1-4: ")
+    print("")
     while True:
         if hit_row == "1":
             hit_row = 1
@@ -198,12 +199,13 @@ def play_game():
             break
         else:
             hit_row = input("Please pick a number between 1-4: ")
+            print("")
 
     hit_val = comp_frBYfr.cell(hit_row + 1, hit_colm + 1).value
 
     
     if hit_val == "X":
-        print("Congrats that was a hit")
+        print("Congrats that was a hit\n")
         upt_hit_cell = comp_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "@")
         upt_hit__blank_cell = blank_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "@")
         comp_guess()
@@ -272,7 +274,8 @@ def start_game():
     else:
 
         while game_winner() == None:
-            time.sleep(2)
+            print("Loading Board... \n")
+            time.sleep(10)
             play_board()
             play_game()
             #comp_guess()
