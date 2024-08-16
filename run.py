@@ -123,9 +123,6 @@ def pick_ship_location():
 ## function to restart the game and reset the board
 def restart_game():
     
-        print("restarting...")
-        print("please wait a minute to restart...")
-
         ## set x and i, rows and colm, to equal 1-4 consecutivly and update the cells for each i and x postion cell
         for x in range(4):
             for i in range(4):
@@ -134,7 +131,7 @@ def restart_game():
                 restart_comp = blank_frBYfr.update_cell(x+2, i+2, "0")
         
         ## exit program
-        exit()
+        #exit()
     
 ## function for computer the guess randomly
 def comp_guess():
@@ -288,7 +285,12 @@ def start_game():
 
     #game_winner()
     #print(game_winner())
+    
+    print("")
     print("~~ Welcome to the Battleships Game: ~~\n")
+    print("Setting up Board...\n")
+    ## restart board before game starts just incase board is filled
+    restart_game()
     print("1: 4x4 grid\n")
 
     data_int = input("Please select 1 to start game: ")
@@ -327,7 +329,10 @@ def start_game():
             #comp_guess()
         else:
             play_board()
+            print("restarting...")
+            print("please wait a minute to restart...")
             game_winner()
+            print("Game End!")
     
    
 
