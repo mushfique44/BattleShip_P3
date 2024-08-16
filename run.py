@@ -1,3 +1,5 @@
+## Importing time and gspread to be able access the features it provides
+## importing sub features creds and radiant 
 import time
 import gspread
 from google.oauth2.service_account import Credentials
@@ -14,44 +16,63 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Battleship_P3')
 
+## Setting variables that will read the google sheets tabs
 frBYfr = SHEET.worksheet('4BY4')
 comp_frBYfr = SHEET.worksheet('comp4BY4')
 fiveBYfive = SHEET.worksheet('5BY5')
 comp_fiveBYfive = SHEET.worksheet('comp5BY5')
 blank_frBYfr = SHEET.worksheet('blank4BY4')
 
+## variables that determine a 4x4 board or 5x5
 GAME_ONE = frBYfr.get_all_values()
 GAME_TWO = fiveBYfive.get_all_values()
+
+## setting up a function that will print the battleship board
 def play_board():
     print("")
     print("-- Player 1 Board: --")
+    ## for a range of to 1-5 print all the values of each row 1-5 
+    ## from 4x4 tab
     for x in range(5):
         print(frBYfr.row_values(x+1))
     print("-- Computers Board: --")
+    ## for a range of to 1-5 print all the values of each row 1-5
+    ## from blank 4x4 computer tab
     for x in range(5):
         print(blank_frBYfr.row_values(x+1))
     print("")
+    ## battleship board symbols
     print("('0' is empty / 'X' is Ship / '@' is hit Ship / '#' missed guess)\n")
 
+## function that does a random pick to position a ship for computer 
 def random_ship():
+    ## set x, y a random number between 1-4
     x = randint(1, 4)
     y = randint(1, 4)
 
+    ## set variable to equal the value of the cell postion of the two random numbers as row and colm
     rand_val = comp_frBYfr.cell(y+1, x+1).value
+
+    ## if the value of the cell is 'X' then run the randomiser of x and y again
+    ## otherwise update that cell so it equals the value 'X'
     if rand_val == "X":
         random_ship()
     else:
       rand_cell = comp_frBYfr.update_cell(y +1, x + 1, "X")
       
     
-    print(x, y)
-    print(rand_val)
+    #print(x, y)
+    #print(rand_val)
     #rand_cell = comp_frBYfr.update_cell(y +1, x + 1, "X")
     
+## function for player to pick where to place their ships    
 def pick_ship_location():
     
+    ## pick the colomn by choosing a-d
     pick_colm = input("Pick a colomn between a-d (needs to be lowercase): ")
+    ## validation so that the pick is between a-d else pick again
     while True: 
+        ## converting the leter pick into a number to use later in the code
         if pick_colm == "a":
             pick_colm = 1
             break
@@ -67,7 +88,10 @@ def pick_ship_location():
         else:
             pick_colm = input("Please pick between a-d (needs to be lowercase): ")
 
+    ## pick the row between 1-4
     pick_row = input("Pick a row between 1-4: ")
+    print("")
+    ## validation to make sure pick is between 1-4 else pick again
     while True:
         if pick_row == "1":
             pick_row = 1
@@ -83,40 +107,55 @@ def pick_ship_location():
             break
         else:
             pick_row = input("Please pick a number between 1-4: ")
+            print("")
 
+    ## variable equals the value of the cell of the row colm position of the pick
     val = frBYfr.cell(pick_row + 1, pick_colm + 1).value
 
+    ## if the variable doesnt equal 'X' then update the value of cell to 'X'
+    ## else make the player pick again
     if val != "X":
         upt_cell = frBYfr.update_cell(int(pick_row) + 1, pick_colm + 1, "X")
     else:
-        print("-- Location already picked. Please pick again --")
+        print("-- Location already picked. Please pick again --\n")
         pick_ship_location()
-    #print(val)
 
-
+## function to restart the game and reset the board
 def restart_game():
     
         print("restarting...")
         print("please wait a minute to restart...")
+
+        ## set x and i, rows and colm, to equal 1-4 consecutivly and update the cells for each i and x postion cell
         for x in range(4):
             for i in range(4):
                 restart_player = frBYfr.update_cell(x+2, i+2, "0")
                 restart_comp = comp_frBYfr.update_cell(x+2, i+2, "0")
                 restart_comp = blank_frBYfr.update_cell(x+2, i+2, "0")
+        
+        ## exit program
         exit()
     
-
+## function for computer the guess randomly
 def comp_guess():
+
+    ## set variables to randomly equal value 1-4
     x1 = randint(1, 4)
     y1 = randint(1, 4)
 
+    ## variable to equal value of cell of the random row colm
     rand_guess = frBYfr.cell(x1 + 1, y1 + 1).value
 
+    ## if the random guess cell value equal '0' then display 'computer missed' 
+    ## and update the cell of the player 4x4 board to display that it has been hit
     if rand_guess == "0":
         print("Computer missed\n")
         upt_comp_miss = frBYfr.update_cell(x1 + 1, y1 + 1,'#')
+    ## if the guess value is '#' that means this has already been guessed
+    ## so the function is run again so it can guess again
     elif rand_guess == "#":
         comp_guess()
+    ## if the guess value equals "X" then 
     elif rand_guess == "X":
         print("Computer has hit your ship\n")
         upt_comp_hit = frBYfr.update_cell(x1+1, y1+1, "@")
@@ -242,7 +281,7 @@ def game_winner():
 def start_game():
 
     #game_winner()
-    print(game_winner())
+    #print(game_winner())
     print("~~ Welcome to the Battleships Game: ~~\n")
     print("1: 4x4 grid\n")
 
@@ -251,6 +290,7 @@ def start_game():
         data_int = input("Please enter 1: \n")
     else:
         play_board()
+        
 
     print("-- Please pick location of First ship --\n")
     pick_ship_location()
