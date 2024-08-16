@@ -161,7 +161,7 @@ def comp_guess():
 def play_game():
 
     print("-- Guess the locations of the computers ships --\n")
-    play_board()
+    #play_board()
     game_winner()
     
     hit_colm = input("Pick a colomn between a-d (needs to be lowercase): ")
@@ -206,6 +206,7 @@ def play_game():
         upt_hit_cell = comp_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "@")
         upt_hit__blank_cell = blank_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "@")
         comp_guess()
+        #play_game()
     elif hit_val == "#":
         print("You have already guesses this location. Please guess again.\n")
         play_game()
@@ -217,7 +218,7 @@ def play_game():
         upt_miss_cell = comp_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "#")
         upt_hit__blank_cell = blank_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "#")
         comp_guess()
-        play_game()
+        #play_game()
 
     #comp_guess()
 
@@ -268,10 +269,13 @@ def start_game():
     if yes_no != "y":
         restart_game()
     else:
+
         while game_winner() == None:
+            play_board()
             play_game()
-            comp_guess()
+            #comp_guess()
         else:
+            play_board()
             game_winner()
     
    
