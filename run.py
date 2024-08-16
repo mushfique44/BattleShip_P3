@@ -272,7 +272,7 @@ def start_game():
     else:
 
         while game_winner() == None:
-            #time.sleep(5)
+            time.sleep(2)
             play_board()
             play_game()
             #comp_guess()
