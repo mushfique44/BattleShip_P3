@@ -147,7 +147,7 @@ def comp_guess():
     rand_guess = frBYfr.cell(x1 + 1, y1 + 1).value
 
     ## if the random guess cell value equal '0' then display 'computer missed' 
-    ## and update the cell of the player 4x4 board to display that it has been hit
+    ## and update the cell of the player 4x4 board to display that it has been missed hit
     if rand_guess == "0":
         print("Computer missed\n")
         upt_comp_miss = frBYfr.update_cell(x1 + 1, y1 + 1,'#')
@@ -155,7 +155,12 @@ def comp_guess():
     ## so the function is run again so it can guess again
     elif rand_guess == "#":
         comp_guess()
-    ## if the guess value equals "X" then 
+    ## if the guess value is '@' that means this has already been guessed
+    ## so the function is run again so it can guess again   
+    elif rand_guess == "@":
+        comp_guess()
+    ## if the guess value equals "X" then that means the computer has guessed correctly
+    ## and will update with '@' to show it has been hit 
     elif rand_guess == "X":
         print("Computer has hit your ship\n")
         upt_comp_hit = frBYfr.update_cell(x1+1, y1+1, "@")
@@ -197,6 +202,7 @@ def comp_guess():
     #         hit_row = input("Please pick a number between 1-4: ")
 
     # hit_val = comp_frBYfr.cell(hit_row + 1, hit_colm + 1).value
+
 
 def play_game():
 
