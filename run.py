@@ -1,3 +1,4 @@
+import time
 import gspread
 from google.oauth2.service_account import Credentials
 from random import randint
@@ -271,6 +272,7 @@ def start_game():
     else:
 
         while game_winner() == None:
+            #time.sleep(5)
             play_board()
             play_game()
             #comp_guess()
