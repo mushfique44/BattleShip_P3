@@ -333,7 +333,7 @@ def start_game():
             print("please wait a minute to restart...")
             game_winner()
             print("Game End!")
-    
+            exit()
    
 
 start_game()
