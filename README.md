@@ -1,8 +1,14 @@
-![Battleships](https://github.com/mushfique44/BattleBhip_P3/blob/main/images/battleship_img.jpeg)
+![Battleships](https://github.com/mushfique44/BattleShip_P3/blob/main/images/battleship_img.jpeg)
 
 Welcome,
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **May 14, 2024**
+To Battleships. This is a stratergy guessing board game. It is played between a user and a computer where each player gets their own 4x4 grid, in which they can place their 1x1 ships in. Each player will place 3 ships. Then the user will have a guess as to where the computers ship is located and then vice versa for the computer. Once either player guesses the correct position of all 3 ships they win the game.
+
+The grid is displayed as shown below.
+
+![Battleship Board]()
+
+Here is the live version of this game
 
 ## Reminders
 
