@@ -127,25 +127,42 @@ Here is the live version of this game
 #### Solved bugs
 - computer was guessing multiple times per guess
   - the computer guess function was running in two different functions, so I had to remove one
-- 
+- when game would crash or the data is changed on the google sheets, the game would start with whatever was playe from previous game
+  - added a reset feature when game is started
+- game would crash after multiple turn because the google cloud feature would give error message saying exceeding quota limit for read and write
+  - added time delays through out the code so that the read and write wasnt running over the limit
+- miss placement of ships and guesses
+  - had to index +1 for each coordinate as the index in python startes at 0
 
-## Creating the Heroku app
+### Unresolved bug/problems
+- because of the google limits on read and write the programs has a bit of delays and can seem slow
+  - need to figure out google cloud features and quota limit restrictions and increases
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+### Validator testing
+- PEP8
+  - Only one unresolved error 
+   - 'E711 comparison to None should be 'if cond is None'
+  - changing this error will cause code to not run correctly
 
-1. `heroku/python`
-2. `heroku/nodejs`
+## Deployment to the Heroku app
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+- This project was deployed using Heroku with the 'Code Institute' mock terminal template
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
+  - copy the github repository
+  - created new Heroku app
+  - set up the buildbacks in the order below
+    1. `heroku/python`
+    2. `heroku/nodejs`
+  - for credentials, create _Config Var_ called `CREDS` and paste the JSON into the value field.
+  - Link repository to the Heroku app
+  - Deploy or put auto deploy on
 
 ## Constraints
 
 The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
 
----
+Google cloud quota limits crashing the code.
 
-Happy coding!
+## credits
+- Code intitutes 'Love Sandwiches Walkthrough' for google sheets inspitation
+- code institute for deployment terminal template
