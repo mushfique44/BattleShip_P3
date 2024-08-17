@@ -117,7 +117,17 @@ Here is the live version of this game
 
 ## Testing
 
+- I have tested this project by doing the following;
+  - using a PEP8 linter and getting rid of all the errors (one error on pep8 but doesnt error the code but breaks code when changed)
+  - testing manually by putting in invalid inputs, such as, numbers instead of string and vise versa, picking inputs thats a repeated, etc.
+  - tests have been done on local terminal as well as Heroku app terminal
 
+### Bugs
+
+#### Solved bugs
+- computer was guessing multiple times per guess
+  - the computer guess function was running in two different functions, so I had to remove one
+- 
 
 ## Creating the Heroku app
 
