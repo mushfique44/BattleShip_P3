@@ -6,7 +6,7 @@ To Battleships. This is a stratergy guessing board game. It is played between a 
 
 The grid is displayed as shown below.
 
-![Battleship Board]()
+![Battleship Board](https://github.com/mushfique44/BattleShip_P3/blob/main/images/battleship_board.jpeg)
 
 Here is the live version of this game
 
