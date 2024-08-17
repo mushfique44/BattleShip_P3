@@ -1,16 +1,25 @@
+## note: all time.sleep() functions are implemented to add a delay so that the google sheet
+## quota limits are not hit and code doesnt break
+
 ## Importing time and gspread to be able access the features it provides
-## importing sub features creds and radiant 
+## importing classes creds and radiant from its funtions library 
 import time
 import gspread
 from google.oauth2.service_account import Credentials
 from random import randint
 
+## google IAM configurations
+## configuration specifies what the user has access to
+## The scope lists the APIs that the  program should access in order to run. 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
     ]
 
+## constant variables to access creds file with the scope access 
+## and gspread authorise method, and pass scoped creds
+## and sheets variable to access the Battleship_P3 spreadsheet from the google sheets
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
@@ -276,25 +285,29 @@ def start_game():
         data_int = input("Please enter 1: \n")
     else:
         ## display boards
+        time.sleep(5)
         play_board()
         
     ## run players first ship pick  by running pick ship function
     print("-- Please pick location of First ship --\n")
     pick_ship_location()
+    time.sleep(5)
 
     ## run players second ship pick  by running pick ship function
     print("-- Please pick location of SECOND ship --\n")
     pick_ship_location()
+    time.sleep(5)
 
     ## run players third ship pick  by running pick ship function
     print("-- Please pick location of THIRD ship --\n")
     pick_ship_location()
-
+    time.sleep(5)
+    
     ## run the comp random ship function three time to have comp pick 3 ship locations
     random_ship()
     random_ship()
     random_ship()
-
+    time.sleep(5)
     ## ask player if they want to continue or if they want to restart
     print("-- Ships are all ready! Time to take out the computers ships!! --\n")
     print("Are ready to continue? ")
@@ -308,14 +321,16 @@ def start_game():
         ## then display the boards and run the play game funtion
         while game_winner() == None:
             print("Loading Board... \n")
-            ## put a time delay so that the google quota limits are not hit
-            time.sleep(10)
+            time.sleep(5)
             play_board()
+            time.sleep(5)
             play_game()
         ## else when a game winner is determined then run the game winner function
         ## which will display winner and end game    
         else:
+            time.sleep(5)
             play_board()
+            time.sleep(5)
             game_winner()
             
    
