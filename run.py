@@ -124,7 +124,7 @@ def pick_ship_location():
 def restart_game():
 
         print("restarting board...")
-        print("please wait a minute to restart...")
+        print("please wait a minute to restart...\n")
 
         ## set x and i, rows and colm, to equal 1-4 consecutivly and update the cells for each i and x postion cell
         for x in range(4):
@@ -166,53 +166,16 @@ def comp_guess():
         print("Computer has hit your ship\n")
         upt_comp_hit = frBYfr.update_cell(x1+1, y1+1, "@")
 
-#def player_guess(hit_val):
-
-    # hit_colm = input("Pick a colomn between a-d (needs to be lowercase): ")
-    # while True: 
-    #     if hit_colm == "a":
-    #         hit_colm = 1
-    #         break
-    #     elif hit_colm == "b":
-    #         hit_colm = 2
-    #         break
-    #     elif hit_colm == "c":
-    #         hit_colm = 3
-    #         break
-    #     elif hit_colm == "d":
-    #         hit_colm = 4
-    #         break
-    #     else:
-    #         hit_colm = input("Please pick between a-d (needs to be lowercase): ")
-
-    # hit_row = input("Pick a row between 1-4: ")
-    # while True:
-    #     if hit_row == "1":
-    #         hit_row = 1
-    #         break
-    #     elif hit_row == "2":
-    #         hit_row = 2
-    #         break
-    #     elif hit_row == "3":
-    #         hit_row = 3
-    #         break
-    #     elif hit_row == "4":
-    #         hit_row = 4
-    #         break
-    #     else:
-    #         hit_row = input("Please pick a number between 1-4: ")
-
-    # hit_val = comp_frBYfr.cell(hit_row + 1, hit_colm + 1).value
-
-
+## function to have the player to start guessing 
 def play_game():
 
     print("-- Guess the locations of the computers ships --\n")
-    #play_board()
-    game_winner()
     
+    ## variable equals value of players input of a-d for colm
     hit_colm = input("Pick a colomn between a-d (needs to be lowercase): ")
+    ## validation so player input is between a-d or player inputs again
     while True: 
+        ## convert all the letters to a number to use later in code
         if hit_colm == "a":
             hit_colm = 1
             break
@@ -228,9 +191,12 @@ def play_game():
         else:
             hit_colm = input("Please pick between a-d (needs to be lowercase): ")
 
+    ## same thing for row selection, player input between 1-4
     hit_row = input("Pick a row between 1-4: ")
     print("")
+    ## validation again so input is between 1-4
     while True:
+        ## convert the input to a number
         if hit_row == "1":
             hit_row = 1
             break
@@ -247,93 +213,113 @@ def play_game():
             hit_row = input("Please pick a number between 1-4: ")
             print("")
 
+    ## variable equal the cell value of the player row and colm input 
     hit_val = comp_frBYfr.cell(hit_row + 1, hit_colm + 1).value
 
-    
+    ## checking if variable value is 'X'
+    ## if so then the player has hit a ship and the blank comp board and hidden comp board
+    ## is updated with '@' value to show a ship was hit
     if hit_val == "X":
         print("Congrats that was a hit\n")
         upt_hit_cell = comp_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "@")
         upt_hit__blank_cell = blank_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "@")
+        ## then the computer guess function is run after player guess
         comp_guess()
-        #play_game()
+    ## if variable value is '#' then player guess function is run again as this is
+    ## a location that has already been guessed
     elif hit_val == "#":
         print("You have already guesses this location. Please guess again.\n")
         play_game()
+    ## if value is '@' then player guesses again as this is a location
+    ## that has been guessed and a ship was hit
     elif hit_val == "@":
         print("You have hit a ship in this location already. Please guess again.\n")
         play_game()
+    ## else anything else means the guess was a miss and the location is 
+    ## updated to '#' so it is shown that it has been guessed on both boards
     else:
         print("That was a miss. Try again next turn!\n")
         upt_miss_cell = comp_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "#")
         upt_hit__blank_cell = blank_frBYfr.update_cell(int(hit_row) + 1, hit_colm + 1, "#")
         comp_guess()
-        #play_game()
 
-    #comp_guess()
-
+## function to determine if player or computer has won
 def game_winner():
     
-    
+    ## list out all of the '@' values are on both hidden comp and player voards
     win_count = comp_frBYfr.findall("@")
     win_comp_count = frBYfr.findall("@")
 
+    ## if length of the list of '@' on the hidden comp board is 
+    ## equal to 3 then the player wins and the restart function is run to end game
     if len(win_count) == 3:
         print("You have WON!\n")
         restart_game()
-
+    ## if length of the list of '@' on the player board is 
+    ## equal to 3 then the computer wins and the restart function is run to end game
     if len(win_comp_count) == 3:
         print("You lose!\n")
         restart_game()
 
+## this function is to start the program and acts as a home page
 def start_game():
-
-    #game_winner()
-    #print(game_winner())
     
+    ## grid size selection choice (currently only one option)
     print("")
     print("~~ Welcome to the Battleships Game: ~~\n")
     print("1: 4x4 grid\n")
 
+    ## read player input and check if it is value 1 or repeat until 
+    ## 1 is selected
     data_int = input("Please select 1 to start game: ")
     while data_int != "1":
         data_int = input("Please enter 1: \n")
     else:
+        ## display boards
         play_board()
         
-
+    ## run players first ship pick  by running pick ship function
     print("-- Please pick location of First ship --\n")
     pick_ship_location()
 
+    ## run players second ship pick  by running pick ship function
     print("-- Please pick location of SECOND ship --\n")
     pick_ship_location()
 
+    ## run players third ship pick  by running pick ship function
     print("-- Please pick location of THIRD ship --\n")
     pick_ship_location()
 
+    ## run the comp random ship function three time to have comp pick 3 ship locations
     random_ship()
     random_ship()
     random_ship()
 
+    ## ask player if they want to continue or if they want to restart
     print("-- Ships are all ready! Time to take out the computers ships!! --\n")
     print("Are ready to continue? ")
     yes_no = input("enter 'y' to continue or anything else to restart: ")
     print("")
+    ## input if not 'y' then restart else start the guesses
     if yes_no != "y":
         restart_game()
     else:
-
+        ## while the game winner function is empty/ no winner is determined yet
+        ## then display the boards and run the play game funtion
         while game_winner() == None:
             print("Loading Board... \n")
+            ## put a time delay so that the google quota limits are not hit
             time.sleep(10)
             play_board()
             play_game()
-            #comp_guess()
+        ## else when a game winner is determined then run the game winner function
+        ## which will display winner and end game    
         else:
             play_board()
             game_winner()
             
    
-
+## start program with start game function
 start_game()
 
 
