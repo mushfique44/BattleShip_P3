@@ -1,4 +1,4 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+![Battleships](https://github.com/mushfique44/BattleBhip_P3/blob/main/images/battleship_img.jpeg)
 
 Welcome,
 
