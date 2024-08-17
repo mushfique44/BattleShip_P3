@@ -299,6 +299,12 @@ def start_game():
 
     # grid size selection choice (currently only one option)
     print("")
+    # reset board before starting game
+    for x in range(4):
+        for i in range(4):
+            restart_player = frBYfr.update_cell(x+2, i+2, "0")
+            restart_comp = comp_frBYfr.update_cell(x+2, i+2, "0")
+            restart_comp = blank_frBYfr.update_cell(x+2, i+2, "0")
     print("~~ Welcome to the Battleships Game: ~~\n")
     print("1: 4x4 grid\n")
 
