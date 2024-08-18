@@ -1,4 +1,4 @@
-![Battleships](https://github.com/mushfique44/BattleShip_P3/blob/main/images/battleship_img.jpeg)
+![Battleships](https://github.com/mushfique44/BattleShip_P3/blob/main/media/battleship_img.jpeg)
 
 # Welcome To Battleships
 
@@ -51,8 +51,6 @@ Here is the live version of this game
   - three random ships are located for the computer
   - these ships are hidden to the user  
 
-![comp hidden board]()
-
 - Players guess locations of ship
   - user input guess
   - computer does random guess
@@ -68,7 +66,7 @@ Here is the live version of this game
 
 ![Board with ships]()
 
-  - Display of all the symbols
+  - Display of all the symbols on both boards
 
 ![Board after a guess]()
 
