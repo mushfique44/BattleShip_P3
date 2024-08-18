@@ -76,7 +76,7 @@ Here is the live version of this game
   - user cannot enter row outside the range of 1-4
   - user cannot guess the same location of a previous guess
 
-![grid selection error]()
+![grid selection error](https://github.com/mushfique44/BattleShip_P3/blob/main/media/gridSizeValidation.jpg)
 
 ![colm and row selection error](https://github.com/mushfique44/BattleShip_P3/blob/main/media/coordValidation.jpg)
 
