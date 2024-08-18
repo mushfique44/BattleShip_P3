@@ -1,4 +1,4 @@
-![Battleships](https://github.com/mushfique44/BattleShip_P3/blob/main/media/battleship_img.jpeg)
+![Battleships](https://github.com/mushfique44/BattleShip_P3/blob/main/media/battleship_img.jpg)
 
 # Welcome To Battleships
 
@@ -6,7 +6,7 @@ This is a stratergy guessing board game. It is played between a user and a compu
 
 The grid is displayed as shown below.
 
-![Battleship Board](https://github.com/mushfique44/BattleShip_P3/blob/main/images/battleship_board.jpeg)
+![Battleship Board](https://github.com/mushfique44/BattleShip_P3/blob/main/media/battleship_board.jpg)
 
 Here is the live version of this game
 
@@ -39,13 +39,13 @@ Here is the live version of this game
 - Grid size selection 
   - can only select a 4x4 grid
 
-![Grid selection]()
+![Grid selection](https://github.com/mushfique44/BattleShip_P3/blob/main/media/gridSizeSelection.jpg)
 
 - Player custom ship selection
   - user can input each ship location
   - user can see its own ships locations for reference
 
-![Player ship selection]()
+![Player ship selection](https://github.com/mushfique44/BattleShip_P3/blob/main/media/playerShipSelection.jpg)
 
 - Computer random ship selection
   - three random ships are located for the computer
@@ -55,20 +55,20 @@ Here is the live version of this game
   - user input guess
   - computer does random guess
 
-![Player and comp guess]()
+![Player and comp guess](https://github.com/mushfique44/BattleShip_P3/blob/main/media/playerAndCompGuess.jpg)
 
 - Game board is displayed
   - Original empty board displayed
   - Displayed after ships have been positioned
   - Displayed after every turn of guess
 
-![Empty board]()
+![Empty board](https://github.com/mushfique44/BattleShip_P3/blob/main/media/battleship_board.jpg)
 
-![Board with ships]()
+![Board with ships](https://github.com/mushfique44/BattleShip_P3/blob/main/media/boardWithShips.jpg)
 
   - Display of all the symbols on both boards
 
-![Board after a guess]()
+![Board after a guess](https://github.com/mushfique44/BattleShip_P3/blob/main/media/boardWithGuess.jpg)
 
 - Input validation and error-checking
   - user has to pick 4x4 grid to start game
@@ -78,11 +78,9 @@ Here is the live version of this game
 
 ![grid selection error]()
 
-![colm a-d selection error]()
+![colm and row selection error](https://github.com/mushfique44/BattleShip_P3/blob/main/media/coordValidation.jpg)
 
-![row 1-4 selection error]()
-
-![repeat guess error]()
+![repeat guess error](https://github.com/mushfique44/BattleShip_P3/blob/main/media/repeatGuessValidation.jpg)
 
 #### All of these are being stored in a google sheet worksheet
 - And code uses gspread features.
